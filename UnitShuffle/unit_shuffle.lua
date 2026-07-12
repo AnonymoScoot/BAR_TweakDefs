@@ -90,24 +90,26 @@ local disallowed_units = {
     "xmasball2_6",
 }
 
+-- for _, unit in ipairs(disallowed_units) do
+--     UnitDefs[unit] = nil
+-- end
+
 local units = {}
 
 for k in pairs(UnitDefs) do
-    if ! disallowed_units[k] then
-        table.insert(units, k)
-    end
+    table.insert(units, k)
 end
 
-for unit_name in pairs(units) do
-    local unit = UnitDefs[unit_name]
+for unit_name, unit in pairs(UnitDefs) do
+    local unit_copy = unit
 
-    if unit.buildoptions then
-        if #unit.buildoptions > 0 then
-            for index, _ in pairs(unit.buildoptions) do
-                unit.buildoptions[index] = units[math.random(#units)]
+    if unit_copy.buildoptions then
+        if #unit_copy.buildoptions > 0 then
+            for index, _ in pairs(unit_copy.buildoptions) do
+                unit_copy.buildoptions[index] = units[math.random(#units)]
             end
         end
     end
 
-    UnitDefs[unit_name] = unit
+    UnitDefs[unit_name] = unit_copy
 end
