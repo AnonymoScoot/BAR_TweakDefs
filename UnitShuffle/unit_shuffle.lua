@@ -1,5 +1,3 @@
-Spring.Echo("UnitDefs modifying")
-
 local all_units = {
     -- "arm_leftshoulder_nationwars_eec",
     -- "arm_leftshoulder_nationwars_ger",
@@ -1329,7 +1327,6 @@ local builders = {
     "raptor_matriarch_healer",
 }
 
-
 for _, builder in pairs(builders) do
     if UnitDefs[builder] then
         local builder_copy = UnitDefs[builder]
@@ -1345,6 +1342,3 @@ for _, builder in pairs(builders) do
         UnitDefs[builder] = builder_copy
     end
 end
-
-
-Spring.Echo("UnitDefs modifying sucessful")
