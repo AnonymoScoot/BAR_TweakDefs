@@ -40,10 +40,10 @@ function printTableKeys(tbl)
     traverseTable(tbl, 0, {}, false)
 end
 
-for k, v in pairs(UnitDefs) do
-    if v.buildoptions then
-        if #v.buildoptions > 0 then
-            Spring.Echo(tostring(k))
-        end
+for key, _ in pairs(UnitDefs) do
+    if string.sub(key, 1, 6) == "raptor" then
+        Spring.Echo(tostring(key))
     end
 end
+
+

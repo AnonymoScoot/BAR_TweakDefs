@@ -103,7 +103,7 @@ for _, un in pairs(us) do
     local u = UnitDefs[un]
 
     if u.buildoptions then
-        if #u.buildoptions > 0 then
+        if #u.buildoptions > 0 and (un ~= "armcom") then
             for index, _ in pairs(u.buildoptions) do
                 u.buildoptions[index] = us[math.random(#us)]
             end
