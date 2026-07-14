@@ -41,9 +41,21 @@ function printTableKeys(tbl)
 end
 
 for key, _ in pairs(UnitDefs) do
-    if string.sub(key, 1, 6) == "raptor" then
-        Spring.Echo(tostring(key))
-    end
+    Spring.Echo(tostring(key))
 end
 
+-----
 
+gl = "This is a global variable"
+
+local lc = "This is a local variable"
+
+
+Spring.Echo(tostring(gl))
+Spring.Echo(tostring(lc))
+
+-----
+
+for k, v in pairs(_G) do
+    Spring.Echo(tostring(k) .. ": " .. tostring(v))
+end
