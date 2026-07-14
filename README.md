@@ -24,7 +24,7 @@ Loading tweakdefs9 modoption
 
 To set a specific tweakdef modoption, use `!bset <tweakdef> <base64_string>`.
 
-Each tweakdef script shares the same global environment table `_G`. This means that changes to the global environment persist across scripts. The global environemnt table `_G` comes with these key-value pairs:
+Each tweakdef script shares the same global environment table `_G`. This means that changes to the global environment persist across scripts. The global environment table `_G` comes with these key-value pairs:
 
 ```
 DEFS: <table>

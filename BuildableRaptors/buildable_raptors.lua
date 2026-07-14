@@ -1,148 +1,182 @@
--- local raptors = {}
+local UnitDefs = UnitDefs or {}
+local raptors = {}
+local turrets = {}
 
--- for key, _ in pairs(UnitDefs) do
---     if string.sub(key, 1, 6) == "raptor" then
---         table.insert(raptors, key)
---     end
--- end
+for key, _ in pairs(UnitDefs) do
+    if string.sub(key, 1, 6) == "raptor" then
+        if key ~= "raptor_hive" and key ~= "raptor_antinuke" and key ~= "raptor_turret_burrow_t2_v1" and key ~= "raptor_worm_green" then
+            if string.match(key, "turret") then
+                table.insert(turrets, key)
+            else
+                table.insert(raptors, key)
+            end
+        end
+    end
+end
 
-raptors = {
-    "raptor_6legged_l",
-    "raptor_air_bomber_acid_t2_v1",
-    "raptor_air_bomber_basic_t1_v1",
-    "raptor_air_bomber_basic_t2_v1",
-    "raptor_air_bomber_basic_t2_v2",
-    "raptor_air_bomber_basic_t4_v1",
-    "raptor_air_bomber_basic_t4_v2",
-    "raptor_air_bomber_brood_t4_v2",
-    "raptor_air_bomber_brood_t4_v3",
-    "raptor_air_bomber_brood_t4_v4",
-    "raptor_air_bomber_emp_t2_v1",
-    "raptor_air_fighter_basic_t1_v1",
-    "raptor_air_fighter_basic_t2_v1",
-    "raptor_air_fighter_basic_t2_v2",
-    "raptor_air_fighter_basic_t2_v3",
-    "raptor_air_fighter_basic_t2_v4",
-    "raptor_air_fighter_basic_t4_v1",
-    "raptor_air_gunship_acid_t2_v1",
-    "raptor_air_gunship_antiair_t2_v1",
-    "raptor_air_gunship_basic_t2_v1",
-    "raptor_air_gunship_emp_t2_v1",
-    "raptor_air_gunship_fire_t2_v1",
-    "raptor_air_kamikaze_basic_t2_v1",
-    "raptor_air_scout_basic_t2_v1",
-    "raptor_air_scout_basic_t3_v1",
-    "raptor_air_scout_basic_t4_v1",
-    "raptor_allterrain_arty_acid_t2_v1",
-    "raptor_allterrain_arty_acid_t4_v1",
-    "raptor_allterrain_arty_basic_t2_v1",
-    "raptor_allterrain_arty_basic_t4_v1",
-    "raptor_allterrain_arty_brood_t2_v1",
-    "raptor_allterrain_arty_brood_t4_v1",
-    "raptor_allterrain_arty_emp_t2_v1",
-    "raptor_allterrain_arty_emp_t4_v1",
-    "raptor_allterrain_assault_acid_t2_v1",
-    "raptor_allterrain_assault_basic_t2_v1",
-    "raptor_allterrain_assault_basic_t2_v2",
-    "raptor_allterrain_assault_basic_t2_v3",
-    "raptor_allterrain_assault_basic_t4_v1",
-    "raptor_allterrain_assault_basic_t4_v2",
-    "raptor_allterrain_assault_emp_t2_v1",
-    "raptor_allterrain_swarmer_acid_t2_v1",
-    "raptor_allterrain_swarmer_basic_t2_v1",
-    "raptor_allterrain_swarmer_basic_t3_v1",
-    "raptor_allterrain_swarmer_basic_t4_v1",
-    "raptor_allterrain_swarmer_emp_t2_v1",
-    "raptor_allterrain_swarmer_fire_t2_v1",
-    "raptor_antinuke",
-    "raptor_hive",
-    "raptor_land_assault_acid_t2_v1",
-    "raptor_land_assault_basic_t2_v1",
-    "raptor_land_assault_basic_t2_v2",
-    "raptor_land_assault_basic_t2_v3",
-    "raptor_land_assault_basic_t4_v1",
-    "raptor_land_assault_basic_t4_v2",
-    "raptor_land_assault_emp_t2_v1",
-    "raptor_land_assault_spectre_t2_v1",
-    "raptor_land_assault_spectre_t4_v1",
-    "raptor_land_kamikaze_basic_t2_v1",
-    "raptor_land_kamikaze_basic_t4_v1",
-    "raptor_land_kamikaze_emp_t2_v1",
-    "raptor_land_kamikaze_emp_t4_v1",
-    "raptor_land_spiker_basic_t2_v1",
-    "raptor_land_spiker_basic_t4_v1",
-    "raptor_land_spiker_spectre_t4_v1",
-    "raptor_land_swarmer_acids_t2_v1",
-    "raptor_land_swarmer_basic_t1_v1",
-    "raptor_land_swarmer_basic_t2_v1",
-    "raptor_land_swarmer_basic_t2_v2",
-    "raptor_land_swarmer_basic_t2_v3",
-    "raptor_land_swarmer_basic_t2_v4",
-    "raptor_land_swarmer_basic_t3_v1",
-    "raptor_land_swarmer_basic_t3_v2",
-    "raptor_land_swarmer_basic_t3_v3",
-    "raptor_land_swarmer_basic_t4_v1",
-    "raptor_land_swarmer_basic_t4_v2",
-    "raptor_land_swarmer_brood_t2_v1",
-    "raptor_land_swarmer_brood_t3_v1",
-    "raptor_land_swarmer_brood_t4_v1",
-    "raptor_land_swarmer_emp_t2_v1",
-    "raptor_land_swarmer_fire_t2_v1",
-    "raptor_land_swarmer_fire_t4_v1",
-    "raptor_land_swarmer_heal_t1_v1",
-    "raptor_land_swarmer_heal_t2_v1",
-    "raptor_land_swarmer_heal_t3_v1",
-    "raptor_land_swarmer_heal_t4_v1",
-    "raptor_land_swarmer_spectre_t3_v1",
-    "raptor_land_swarmer_spectre_t4_v1",
-    "raptor_matriarch_acid",
-    "raptor_matriarch_basic",
-    "raptor_matriarch_electric",
-    "raptor_matriarch_fire",
-    "raptor_matriarch_healer",
-    "raptor_matriarch_spectre",
-    "raptor_queen_easy",
-    "raptor_queen_epic",
-    "raptor_queen_hard",
-    "raptor_queen_normal",
-    "raptor_queen_veryeasy",
-    "raptor_queen_veryhard",
-    "raptor_turret_acid_t2_v1",
-    "raptor_turret_acid_t3_v1",
-    "raptor_turret_acid_t4_v1",
-    "raptor_turret_antiair_t2_v1",
-    "raptor_turret_antiair_t3_v1",
-    "raptor_turret_antiair_t4_v1",
-    "raptor_turret_antinuke_t2_v1",
-    "raptor_turret_antinuke_t3_v1",
-    "raptor_turret_basic_t2_v1",
-    "raptor_turret_basic_t3_v1",
-    "raptor_turret_basic_t4_v1",
-    "raptor_turret_burrow_t2_v1",
-    "raptor_turret_emp_t2_v1",
-    "raptor_turret_emp_t3_v1",
-    "raptor_turret_emp_t4_v1",
-    "raptor_turret_meteor_t4_v1",
-    "raptor_worm_green",
-    "raptorartillery",
-    "raptorh1b",
-    "raptorh5",
+local factories = {
+    air = {
+        [1] = {
+            UnitDefs["armap"],
+            UnitDefs["corap"],
+            UnitDefs["legap"],
+            UnitDefs["armplat"],
+            UnitDefs["corplat"],
+            UnitDefs["legsplab"],
+        },
+        [2] = {
+            UnitDefs["armaap"],
+            UnitDefs["coraap"],
+            UnitDefs["legaap"],
+        },
+        [3] = {
+            UnitDefs["armhaap"],
+            UnitDefs["corhaap"],
+            UnitDefs["leghaap"],
+        },
+    },
+    bot = {
+        [1] = {
+
+            UnitDefs["armlab"],
+            UnitDefs["corlab"],
+            UnitDefs["leglab"],
+            UnitDefs["armhp"],
+            UnitDefs["armfhp"],
+            UnitDefs["corhp"],
+            UnitDefs["corfhp"],
+            UnitDefs["leghp"],
+            UnitDefs["legfhp"],
+            UnitDefs["armamsub"],
+            UnitDefs["coramsub"],
+            UnitDefs["legamphlab"],
+        },
+        [2] = {
+            UnitDefs["armalab"],
+            UnitDefs["coralab"],
+            UnitDefs["legalab"],
+        },
+        [3] = {
+
+            UnitDefs["armhalab"],
+            UnitDefs["corhalab"],
+            UnitDefs["leghalab"],
+        }
+    },
+    vehicle = {
+        [1] = {
+
+            UnitDefs["armvp"],
+            UnitDefs["corvp"],
+            UnitDefs["legvp"],
+        },
+        [2] = {
+
+            UnitDefs["armavp"],
+            UnitDefs["coravp"],
+            UnitDefs["legavp"],
+        },
+        [3] = {
+            UnitDefs["armhavp"],
+            UnitDefs["corhavp"],
+            UnitDefs["leghavp"],
+        },
+    },
+    sea = {
+        [1] = {
+
+            UnitDefs["armsy"],
+            UnitDefs["corsy"],
+            UnitDefs["legsy"],
+        },
+        [2] = {
+
+            UnitDefs["armasy"],
+            UnitDefs["corasy"],
+            UnitDefs["legadvshipyard"],
+        },
+        [3] = {
+            UnitDefs["armhasy"],
+            UnitDefs["corhasy"],
+        },
+    },
+    experimental = {
+        UnitDefs["armshltx"],
+        UnitDefs["armshltxuw"],
+        UnitDefs["corgant"],
+        UnitDefs["corgantuw"],
+        UnitDefs["leggant"],
+        UnitDefs["leggantuw"],
+    }
 }
 
 
-local hive = UnitDefs["armhavp"]
-local com = UnitDefs["raptorh5"]
 
-com.canattack = false
-com.canrepair = true
-com.canreclaim = true
-com.canrestore = true
-
-for index, raptor in ipairs(raptors) do
-    hive.buildoptions[index] = raptor
-    com.buildoptions[index] = raptor
+local function add_factory_unit(unit, facts)
+    for _, fac in ipairs(facts) do
+        table.insert(fac.buildoptions, unit)
+        for i, v in ipairs(fac.buildoptions) do
+        end
+    end
 end
 
-local armcom = UnitDefs["armcom"]
+for _, raptor in pairs(raptors) do
+    local tier = string.match(raptor, "t%d+")
 
-armcom.buildoptions[#armcom.buildoptions + 1] = "armhavp"
+    if tier then
+        local t = tonumber(string.sub(tier, 2, 2))
+
+        if t < 4 then
+            if string.match(raptor, "land") then
+                add_factory_unit(raptor, factories.bot[t])
+            elseif string.match(raptor, "air") then
+                add_factory_unit(raptor, factories.air[t])
+            elseif string.match(raptor, "allterrain") then
+                add_factory_unit(raptor, factories.vehicle[t])
+            end
+            add_factory_unit(raptor, factories.sea[t])
+        else
+            add_factory_unit(raptor, factories.experimental)
+        end
+    else
+        if raptor == "raptor_6legged_l" then
+            add_factory_unit(raptor, factories.vehicle[2])
+            add_factory_unit(raptor, factories.sea[2])
+        elseif raptor == "raptorartillery" then
+            add_factory_unit(raptor, factories.vehicle[3])
+            add_factory_unit(raptor, factories.sea[3])
+        elseif raptor == "raptorh1b" then
+            add_factory_unit(raptor, factories.bot[1])
+            add_factory_unit(raptor, factories.sea[1])
+        elseif raptor == "raptorh5" then
+            add_factory_unit(raptor, factories.bot[2])
+            add_factory_unit(raptor, factories.sea[2])
+
+            local rcom = UnitDefs[raptor]
+
+            rcom.canattack = false
+            rcom.canrepair = true
+            rcom.canreclaim = true
+            rcom.canrestore = true
+
+            for i, turret in ipairs(turrets) do
+                rcom.buildoptions[i] = turret
+            end
+        else
+            add_factory_unit(raptor, factories.experimental)
+        end
+    end
+end
+
+table.insert(UnitDefs["armaca"].buildoptions, "armhaap")
+table.insert(UnitDefs["coraca"].buildoptions, "corhaap")
+table.insert(UnitDefs["legaca"].buildoptions, "leghaap")
+table.insert(UnitDefs["armacv"].buildoptions, "armhavp")
+table.insert(UnitDefs["coracv"].buildoptions, "corhavp")
+table.insert(UnitDefs["legacv"].buildoptions, "leghavp")
+table.insert(UnitDefs["armack"].buildoptions, "armhalab")
+table.insert(UnitDefs["corack"].buildoptions, "corhalab")
+table.insert(UnitDefs["legack"].buildoptions, "leghalab")
+table.insert(UnitDefs["armacsub"].buildoptions, "armhasy")
+table.insert(UnitDefs["coracsub"].buildoptions, "corhasy")
+table.insert(UnitDefs["leganavyconsub"].buildoptions, "leghasy")
